@@ -1,0 +1,307 @@
+GIT ESTUDOS
+
+
+--------------------------------------------------------
+COMANDOS MAIS USADOS
+--------------------------------------------------------
+
+-git init
+-git status
+-git add .
+-git add *
+-git add nome 
+-git commit -m "O que fez" 
+-git commit -am "O que mudou" 
+
+-git remote add origin url
+-git clone url
+-git push
+-git push origin master
+-git pull
+-git pull origin master
+
+-git checkout -b nome (cria uma branch)
+-git checkout nome (vai para esta branch)
+-git branch (diz qual branch estar)
+-gut checkout -D nome (deletar um branch)
+
+--------------------------------------------------------
+COMANDO BÁSICO GIT DO CICLO DE VIDA
+--------------------------------------------------------
+
+VER TODAS AS PASTAS
+-ls
+-ls -a (ver arquivos ocultos)
+-ls -la (verifica todos as pastas e documentos do local)
+-cd .git/ (Pasta onde fica salvo as modificações do projeto)
+
+
+CRIAR PASTA
+-mkdir git-course 
+-cd git-course/
+
+ENTRAR NA PASTA
+-cd git-course/
+OBS: Sempre é preciso criar uma pasta e inicar um repositório. A pasta
+OBS2:.git/ é onde fica as modificações
+
+
+CRIANDO REPOSITORIO GIT
+-git init
+
+
+VER O ESTATOS DOS ARQUIVOS
+-git status
+
+
+AUTOR DOS COMMITS
+-git config --global user.email "email"
+-git config --global user.name nome
+
+
+PASSAR DE UNTRACK PARA TRACKED (Git ter ciência deles)
+-git add .     ou     git add * (todos os arquivos)
+-git add nome (arquivo em especifico)
+
+
+COMITAR O ARQUIVO EM STAGED
+-git commit -m "O que fez" (crar uma versão, uma imagem do projeto)
+-git commit -am "O que mudou" (Quando for uma arquivo já existente)
+-a de all e m para mensagens
+
+
+--------------------------------------------------------
+GitHUB
+--------------------------------------------------------
+
+Ligando do local ao remoto 
+-git remote add origin url
+
+
+DEPOIS VER ESTES COMANDOS
+-git branch -M main
+-git push -u origin main
+
+
+Ligando repositorio remoto ao local
+-git clone url
+OBS: origin = endereço (apelidio)
+OBS2:shift + insert = control + V
+
+
+Lista de repositorio remoto
+-git remote -v
+
+
+Subir repositorio local para o remoto
+-git push
+-git push origin master
+(master = branch)
+(Origin = url)
+
+
+Baixar do repositorio
+-git pull
+ou
+-git pull origin master
+(master = branch)
+(Origin = url
+-git fetch -p origin (DEPOIS VER ESTE COMANDO)
+
+
+-MANIPULAÇÃO DE BRANCH
+-git checkout -b nome (cria uma branch)
+-git checkout nome (vai para esta branch)
+-git branch (diz qual branch estar)
+-gut checkout -D nome (deletar um branch)
+OBS: Comando de deletar, não pegou
+
+--------------------------------------------------------
+Comandos básicos CLI (CMD)
+--------------------------------------------------------
+
+CRIAR PASTA
+-mkdir nome
+
+DELETAR UMA PASTA
+-rmdir nome /S /Q
+
+CRIAR UM ARQUIVO
+-echo hello > nome.txt
+
+DELETAR UM ARQUIVO
+-del nomePasta (deleta tudo o que tem na pasta, mas nao a pasta)
+
+VOLTAR PARA A PASTA ANTERIOR
+-cd ..
+-c..
+
+NAVEGAR PELAS PASTAS
+-cd /
+-cd (caminho)
+
+MOVER ARQUIVOS PARA PASTAS
+mb arquivo./pasta/
+
+LISTAR DIRETÓRIO
+-dir
+
+LIMPAR O TERMINAL
+-cls
+OBS: Tab completa o nome da pasta
+
+PRINTAR DE VOLTA O QUE DIGITO
+-echo
+
+OUTROS COMANDOS
+-vi nome.md (Criar ou selecionar)
+-i (comando para começara a editar)
+-esc para sair do modo de edição
+-:wq para salvar a edição
+OBS: Arquivos de textos apenas, md é o formato
+
+--------------------------------------------------------
+GIT COMANDO DE CONFIGURAÇÕES
+--------------------------------------------------------
+
+VERIFICAR CONFIGURAÇÕES GIT
+-git config --list
+
+TROCAR EMAIL, nome outro
+-git config --global --user.email ""
+-git config --global --user.nickname ""
+
+VER INFORMAÇÕES ESPECIFICA
+-git config --global --unset.email
+-git config --global --unset.nickname
+-git config user.name
+
+CONFIGURAÇÕES ESPECIFICAS
+-git config --global user.name "CleydsonPaes"
+-git config --global user.email "xxx@xxx.com"
+-git config --global core.editor xxx (Não sei o que é)
+
+
+--------------------------------------------------------
+CHAVE SSH
+--------------------------------------------------------
+
+-chave publica: configurar para enviar o codigo para o github sem precisar
+de muitos processos
+
+CRIANDO CHAVE SSH
+-ssh-keygen -t ed25519 -c email
+-senha
+
+VER A CHAVE
+-cat id_ed25519.pub
+-Copiar e colar o nome e ir no github
+
+INICIAR A CHAVE
+-eval $(ssh-agent -s)
+-ssh-add id_ed25519
+-senha
+
+TOKENS
+
+--------------------------------------------------------
+TRACKED
+--------------------------------------------------------
+
+-Status dos arquivos rastreados
+
+	UNMODIFIED
+	-Arquivo não modificado
+	OBS:comparando o Sha1 o git identifica isso
+
+	MODIFIELD
+	-Arquivo modificado
+
+	STAGED (Foto)
+	-Arquivos que estão se preparando para ser commitado
+
+UNTRACKED
+-Arquivos que o git não tem ciência deles
+
+
+	Ciclo
+	Untrack -> unmodifield -> modifeld -> staged -> unmodifield
+
+--------------------------------------------------------
+ALGORITMO DE CRIPTAÇÃO SHA1
+--------------------------------------------------------
+
+-openssl sha1 arquivo
+(retorna a criptação)
+
+
+OBJETOS FUNDAMENTAIS
+OBS: contem o conteudo, tipo do objeto, metadados e etc
+tudo isso são alterações que são armazenados em blobs, tree ou commits
+
+-Blobs: bloco básico de composição
+
+-Trees: Armazena blobs ou outras tree, tem o sha1 dos blobs
+
+-Commits: junta blobs, tree, ultimo commit, possui sha1
+
+-histórico de commits: todas as alterações
+
+
+--------------------------------------------------------
+SERVIDOR REMOTO
+--------------------------------------------------------
+
+-GitHUB
+
+AMBIENTE DE DESENVOLVIMENTO (Meu pc)
+-Working directory (Desenvolvimento)
+-Staging area (Pasta onde está os commits)
+-Local Repository (Repositorio local commitado)
+
+--------------------------------------------------------
+ESTUDAR DEPOIS
+--------------------------------------------------------
+
+10 - Visualizando logs
+
+	.git log (mostra as informações do commit)
+	.git log --decorate (Mais informações)
+	.git log --outhor="Nome" (Filtrar por nomes)
+	.git shortlog (filtra por ordem alfabetica do autor, quantidade de commit e etc)
+	.git shortlog -sn (Filtrar por quantidade de commit)
+	.git log --graph (Usando graficos para mostrar as informações)
+	.git show (filtrar pelo numero de indentificação)
+
+11-Visualizando o diff
+
+	.git diff (mostra a modificação antes do commit)
+	OBS: Importante
+	.git diff --name-only (Somente os nome dos arquivos modificado)
+
+12 - Desfazer coisas
+
+	.git checkout xxxx (reseta a modificação)
+	.git reset HEAD (reseta o arquivo depois de ser add)
+	.git reset soft (Retorna do estado commit para o estado staged, ou seja, pronto para ser comitado)
+	.git reset mixerd (Retorna antes do staged)
+	.git reset hard (reseta tudo daquele commited)
+	OBS: é preciso escolher o commit anterior ao que se quer modificar
+
+
+18-Fazendo fork de um projeto
+	.Funciona para qualquer repositório
+
+22-Entendendo o Merge
+
+23-Entendendo o rebase
+
+24-Merg e Rebase na pratica
+
+
+
+
+
+
+
+
